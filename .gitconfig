@@ -1,0 +1,20 @@
+[ghq]
+	root = /Users/krobowl/src
+[user]
+	name = 桐山圭祐
+	email = krkr.xm.rkr7x@gmail.com
+[core]
+	excludesfile = /Users/krobowl/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/krobowl/.stCommitMsg
+# driver for merging Xcode project files
+[merge "mergepbx"]
+	name = XCode project files merger
+	driver = mergepbx %O %A %B
+
