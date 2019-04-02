@@ -36,7 +36,7 @@ git clone --recursive "$DOTFILES_REPOS" $(basename "$DOTFILES_DIR")
 cd $(basename "$DOTFILES_DIR")
 
 # Run etc/setup.sh
-. etc/setup_macOS.sh
+. etc/setup.sh
 
 # Return to current directory
 cd "$CURRENT_DIR"
