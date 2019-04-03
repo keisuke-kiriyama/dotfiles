@@ -25,3 +25,4 @@ fi
 
 # Change shell to zsh
 chsh -s /usr/local/bin/zsh
+echo 'Please restart terminal'

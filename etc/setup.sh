@@ -30,6 +30,13 @@ if [ -f "${HOME}/.zshrc" ]; then
 fi
 ln -s "${DOTFILES_DIR}/.zshrc" "${HOME}/.zshrc"
 
+# Link iTerm2 preferences
+if [ -f "${HOME}/Library/Preferences/com.googlecode.iterm2.plist" ]; then
+  rm "${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
+  ln -s "${DOTFILES_DIR}/others/com.googlecode.iterm2.plist" "${HOME}/Library/Preferences/com.googlecode.iterm2.plist"
+  defaults read com.googlecode.iterm2
+fi
+
 
 # macOS only
 if [ "$(uname)" == "Darwin" ]; then
