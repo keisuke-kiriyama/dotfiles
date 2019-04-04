@@ -10,7 +10,7 @@ brew tap caskroom/cask
 brew install zsh git wget tree jq
 
 # Install development apps
-brew cask install visual-studio-code docker virtualbox vagrant
+brew cask install visual-studio-code docker google-chrome
 
 # Install Caskroom-fonts
 brew tap caskroom/fonts
