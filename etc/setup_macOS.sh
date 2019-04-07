@@ -18,6 +18,12 @@ brew tap caskroom/fonts
 # Install development fonts
 brew cask install font-ricty-diminished
 
+# Karabinar settings
+if [ -f "${HOME}/.config/karabiner/karabiner.json" ]; then
+  cp "${DOTFILES_DIR}/others/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+fi
+
+
 # Add shell to /etc/shells
 if [ ! "`cat /etc/shells | grep /usr/local/bin/zsh`" ]; then
     echo /usr/local/bin/zsh | sudo tee -a /etc/shells
