@@ -1,92 +1,45 @@
 #!/bin/sh
 
-echo "ハローけいすけ"
+################################################################################
+# VARIABLES                                                                    #
+DOTFILES_REPOS='https://github.com/keisuke-kiriyama/dotfiles.git'
+DOTFILES_DIR="${HOME}/.dotfiles"; export DOTFILES_DIR
+DOTFILES_DESC='
+       _       _    __ _ _
+    __| | ___ | |_ / _(_) | ___  ___
+   / _` |/ _ \| __| |_| | |/ _ \/ __|
+  | (_| | (_) | |_|  _| | |  __/\__ \
+   \__,_|\___/ \__|_| |_|_|\___||___/
+  This script will automatically setup your development environment.
+'
+################################################################################
 
+# Check whether git command exists
+if ! type git >/dev/null 2>&1; then
+  echo 'ERROR: Please install git command at first, and then re-run this script.' >&2
+  exit 1
+fi
 
+# Remember current directory
+CURRENT_DIR="$(pwd)"
 
+# Print description
+echo "$DOTFILES_DESC"
 
+# Change working directory
+cd $(dirname "$DOTFILES_DIR")
 
+# Git clone dotfiles repository
+git clone --recursive "$DOTFILES_REPOS" $(basename "$DOTFILES_DIR")
 
+# Change working directory
+cd $(basename "$DOTFILES_DIR")
 
+# Run etc/setup.sh
+. etc/setup.sh
 
+# Return to current directory
+cd "$CURRENT_DIR"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# ################################################################################
-# # VARIABLES                                                                    #
-# DOTFILES_REPOS='https://github.com/keisuke-kiriyama/dotfiles.git'
-# DOTFILES_DIR="${HOME}/.dotfiles"; export DOTFILES_DIR
-# DOTFILES_DESC='
-#        _       _    __ _ _
-#     __| | ___ | |_ / _(_) | ___  ___
-#    / _` |/ _ \| __| |_| | |/ _ \/ __|
-#   | (_| | (_) | |_|  _| | |  __/\__ \
-#    \__,_|\___/ \__|_| |_|_|\___||___/
-#   This script will automatically setup your development environment.
-# '
-# ################################################################################
-
-# # Check whether git command exists
-# if ! type git >/dev/null 2>&1; then
-#   echo 'ERROR: Please install git command at first, and then re-run this script.' >&2
-#   exit 1
-# fi
-
-# # Remember current directory
-# CURRENT_DIR="$(pwd)"
-
-# # Print description
-# echo "$DOTFILES_DESC"
-
-# # Change working directory
-# cd $(dirname "$DOTFILES_DIR")
-
-# # Git clone dotfiles repository
-# git clone --recursive "$DOTFILES_REPOS" $(basename "$DOTFILES_DIR")
-
-# # Change working directory
-# cd $(basename "$DOTFILES_DIR")
-
-# # Run etc/setup.sh
-# . etc/setup.sh
-
-# # Return to current directory
-# cd "$CURRENT_DIR"
-
-# # Restart login shell
-# exec "$SHELL" -l
+# Restart login shell
+exec "$SHELL" -l
